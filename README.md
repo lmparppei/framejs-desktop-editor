@@ -13,4 +13,4 @@ Read more about frame.js at [http://mrdoob.github.io/frame.js/](http://mrdoob.gi
 
 ### Possible bugs & problems
 
-* To avoid using non-relative paths within JSON files the renderer base URI is set to project path. This might cause weird things to happen in some cases, but mostly everything seems to run fine. I've found one minor bug with the play button SVG being lost due to changed path, but it's easy to fix.
+* To avoid using non-relative paths within JSON files the renderer base URI is set to project path. This might cause weird things to happen in some cases, but mostly everything seems to run fine. There's one known bug with the play button directly caused by this situation (play button SVG file becomes 404), but it will be easy to fix.
