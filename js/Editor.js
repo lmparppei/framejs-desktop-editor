@@ -65,6 +65,7 @@ var Editor = function () {
 	this.duration = 500;
 
 	this.libraries = [];
+
 	this.includes = [];
 	this.effects = [];
 	this.timeline = new FRAME.Timeline();
@@ -350,6 +351,14 @@ Editor.prototype = {
 	fromJSON: function ( json ) {
 
 		function loadFile( url, onLoad ) {
+			// If file to be loaded does not exist
+			var relativePath = path.join( app.project.path, url );
+
+			if (!fs.existsSync(relativePath)) {
+				console.log('File does not exist: ' + url);
+				onLoad();
+				return false;
+			}
 
 			var request = new XMLHttpRequest();
 /*
@@ -381,12 +390,13 @@ Editor.prototype = {
 				}
 
 				var url = libraries[ count ++ ];
-/*
-				if (app.project.path && url.substr(0, 4) != 'http') {
-					url = path.join(app.project.path, url);
-				}
-*/
+
 				loadFile( url, function ( content ) {
+					if (!content) {
+						// Let's skip stuff we can't find
+						loadNext();
+						return;
+					}
 
 					scope.addLibrary( url, content );
 					loadNext();

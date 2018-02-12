@@ -61,7 +61,24 @@ var Tools = function (editor) {
 		editor.selected.className (color);
 	}
 
-	this.open = function () {
+	this.open = function (file) {
+
+		function openFile (filename) {
+			if (!fs.existsSync(filename)) return;
+
+			app.setCurrentProject(filename);
+
+			fs.readFile(filename, 'utf-8', function (err, data) {
+				editor.clear();
+				editor.fromJSON( JSON.parse( data ) );
+			});
+		}
+
+		if (file && fs.existsSync(file)) {
+			openFile(file);
+			return true;
+		}
+
 		dialog.showOpenDialog({
 			title: 'Open frame.js project',
 			filters: [
@@ -69,15 +86,9 @@ var Tools = function (editor) {
 			],
 			properties: ['openFile']
 		}, function (filePaths) {
-			if (!filePaths[0]) return;
+			if (!filePaths) return;
 
-			app.setCurrentProject(filePaths[0]);
-
-			fs.readFile(filePaths[0], 'utf-8', function (err, data) {
-				editor.clear();
-				editor.fromJSON( JSON.parse( data ) );
-			});
-
+			openFile(filePaths[0]);
 		});
 	}
 
@@ -91,6 +102,28 @@ var Tools = function (editor) {
 			}, function (filename) {
 				if (!filename) return;
 
+				if (saveAs && editor.libraries.length > 0) {
+					
+					var newPath = path.dirname(filename);
+					var libraries = [];
+
+					for (var l in editor.libraries) {
+						
+						var originalPath = path.join(app.project.path, editor.libraries[l]);
+						var newPath = path.relative(newPath, originalPath);
+						libraries.push(newPath);
+
+					}
+
+					editor.libraries = libraries;
+					for (var l in editor.libraries) {
+						editor.addLibrary(editor.libraries[l]);
+					}
+					
+					alert('Note: Project was saved with a new name. Libraries use relative paths, so double-check your library settings under Project tab. If you encounter problems, fix all library paths manually in the JSON file.');
+					return;
+				}
+
 				app.setCurrentProject(filename);
 				tools.save();
 			});
@@ -103,7 +136,26 @@ var Tools = function (editor) {
 			if (err) console.log("Error writing file");
 		});
 
+		app.saved = true;
 		console.log("Project saved");
+	}
+
+	this.addLibrary = function (panel) {
+		dialog.showOpenDialog({
+			title: 'Add libraries',
+			filters: [
+				{ name: 'JavaScript files', extensions: ['js'] }
+			],
+			properties: ['openFile', 'multiSelections']
+		}, function (filePaths) {
+
+			for (var f in filePaths) {
+				var file = path.join( path.relative( app.project.path, path.dirname(filePaths[f])), path.basename(filePaths[f]) );
+				editor.addLibrary(file);
+			}
+
+			return;
+		});
 	}
 
 }

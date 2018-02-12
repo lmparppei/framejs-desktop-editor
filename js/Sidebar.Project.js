@@ -17,6 +17,12 @@ Sidebar.Project = function ( editor ) {
 	var libraries = new UI.Select().setMultiple( true ).setWidth( '280px' );
 	container.add( libraries );
 
+	var addLibrary = new UI.Button ( 'Add library' );
+	addLibrary.onClick( function () {
+		tools.addLibrary(libraries);
+	});
+	container.add( addLibrary );
+
 	container.add( new UI.Break(), new UI.Break() );
 
 	// Scripts

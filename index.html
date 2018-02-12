@@ -106,8 +106,13 @@
 			}
 
 			// Set current project to null
-
-			app.setCurrentProject();
+			var lastProject = editor.config.getKey( 'lastProject' );
+			if (lastProject) {
+				var opened = tools.open(lastProject);
+				if (!opened) app.setCurrentProject();
+			} else {
+				app.setCurrentProject();
+			}
 
 			//
 

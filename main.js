@@ -45,12 +45,13 @@ app.on('ready', createWindow)
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
   app.quit()
-  /*
+  
   if (process.platform !== 'darwin') {
     app.quit()
   }
-  */
+  
 })
+
 /*
 app.on('activate', function () {
   if (mainWindow === null) {

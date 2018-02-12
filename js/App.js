@@ -1,9 +1,11 @@
 // App settings
 
 var app = {
+	devMode: true,
 	name: "frame.js desktop editor",
 	status: null,
-	
+	saved: true,
+
 	project: {
 		path: null,
 		file: null,
@@ -15,7 +17,7 @@ var app = {
 			project = 'New project';
 
 			app.project.file = null;
-			app.project.path = null;
+			app.project.path = path.dirname(require.main.filename);
 			document.head.innerHTML = app.header + 
 				"<base href='" + path.dirname(require.main.filename) + "/'>";
 
@@ -36,6 +38,10 @@ var app = {
 }
 
 window.addEventListener("beforeunload", function (event) {
+	editor.config.setKey( 'lastProject', path.join(app.project.path, app.project.file) );
+
+	if (app.devMode) { return; }
+
   	if (!app.shutDown) { event.preventDefault(); } else { return null; }
   	  
  	if (confirm("All unsaved data will be lost. Are you sure?")) {

@@ -45,8 +45,11 @@ Menubar.File = function ( editor ) {
 
 	function Open () {
 
-		if ( confirm( 'Any unsaved data will be lost. Are you sure?' ) )
+		if (!app.saved) {
+			if ( confirm( 'Any unsaved data will be lost. Are you sure?' ) ) tools.open();
+		} else {
 			tools.open();
+		}
 
 	}
 
