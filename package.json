@@ -8,13 +8,10 @@
   },
   "repository": "https://github.com/lmparppei/framejsdesktop",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Frame.js",
+    "editor"
   ],
-  "author": "GitHub",
+  "author": "KAPITAN!",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "~1.7.8"
