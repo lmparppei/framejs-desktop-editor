@@ -4,14 +4,16 @@ Electron fork of @mrdoob's [frame.js editor](http://mrdoob.github.io/frame.js/ed
 
 Read more about frame.js at [http://mrdoob.github.io/frame.js/](http://mrdoob.github.io/frame.js/)
 
-### Differences with the web editor
+### Differences from the web editor
 
 * Copy and paste functions (Cmd-C, Cmd-V and Cmd-D to duplicate)
 * Open and save instead of import and export
-* Libraries can be added directly (... though not removed at the moment)
-* File paths are (and should stay) relative to the project on your hard disk. If you intend to use libraries and other files, you should start by saving your project in its final path. *Save as...* tries to relocate your libraries automatically if the path is changed, but you might still need to fix things manually in the JSON file. 
-* At this point, there is no auto-save and the app doesn't keep track if you have changed something. Be sure to save your project often.
+* Libraries can be added and removed (not thoroughly tested yet)
+* File paths are (and should stay) relative to the project on your hard disk. If you intend to use libraries and other files, you should start by saving your project in its final path. *Save as...* tries to relocate your libraries automatically if the path is changed, but you might still need to fix things manually in the JSON file.
+* You can turn on the developer console under help menu
+* To avoid using non-relative paths within JSON files the renderer base URI is set to project path. This might cause weird things in some cases, but mostly everything seems to run fine.
 
-### Possible bugs & problems
+### Note
 
-* To avoid using non-relative paths within JSON files the renderer base URI is set to project path. This might cause weird things to happen in some cases, but mostly everything seems to run fine. There's one known bug with the play button directly caused by this situation (play button SVG file becomes 404), but it will be easy to fix.
+* Remember to save your project often as there is no auto-save and things are still a bit wonky
+* I've tried to keep the desktop stuff as separated as possible to be able to include future features of frame.js web editor. App.js and Tools.js are the core components for desktop functionality.
