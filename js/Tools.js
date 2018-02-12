@@ -1,3 +1,13 @@
+/*
+
+This is a collection of helper functions for frame.js editor. 
+
+Most of them should work in the web version too, if you remove the
+ones that depend on Electron (save/load/add library). I've marked
+those for future convenience.
+
+*/
+
 var Tools = function (editor) {
 
 	this.delete = function () {
@@ -61,6 +71,7 @@ var Tools = function (editor) {
 		editor.selected.className (color);
 	}
 
+	// ELECTRON-DEPENDANT
 	this.open = function (file) {
 
 		function openFile (filename) {
@@ -92,6 +103,7 @@ var Tools = function (editor) {
 		});
 	}
 
+	// ELECTRON-DEPENDANT
 	this.save = function (saveAs) {
 		if (saveAs || !app.project.path || !app.project.file) {
 			dialog.showSaveDialog({
@@ -140,6 +152,7 @@ var Tools = function (editor) {
 		console.log("Project saved");
 	}
 
+	// ELECTRON-DEPENDANT
 	this.addLibrary = function (panel) {
 		dialog.showOpenDialog({
 			title: 'Add libraries',
@@ -156,6 +169,17 @@ var Tools = function (editor) {
 
 			return;
 		});
+	}
+
+	this.removeLibrary = function (library) {
+		if (library) { editor.removeLibrary(library); console.log('moi'); return; }
+
+		if (app.libraryList.dom.selectedOptions.length) {
+			for (var l in app.libraryList.dom.selectedOptions) {
+				var lib = app.libraryList.dom.selectedOptions[l].innerHTML;
+				if (lib) editor.removeLibrary(lib);
+			}
+		}
 	}
 
 }

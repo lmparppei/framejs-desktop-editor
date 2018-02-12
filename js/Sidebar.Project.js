@@ -11,24 +11,39 @@ Sidebar.Project = function ( editor ) {
 
 	// Libraries
 
-	container.add( new UI.Text( 'Libraries' ).setTextTransform( 'uppercase' ) );
-	container.add( new UI.Break(), new UI.Break() );
+	container.add( new UI.Text( 'Libraries' ) );
+	container.add( new UI.Break() );
 
 	var libraries = new UI.Select().setMultiple( true ).setWidth( '280px' );
 	container.add( libraries );
 
+	// Let's keep this separate from rest of the code to migrate to new versions of Frame.js editor
+	app.libraryList = libraries; 
+
+	var span = new UI.Span();
+	
 	var addLibrary = new UI.Button ( 'Add library' );
 	addLibrary.onClick( function () {
 		tools.addLibrary(libraries);
 	});
-	container.add( addLibrary );
+	span.add( addLibrary );
 
-	container.add( new UI.Break(), new UI.Break() );
+	var removeLibrary = new UI.Button ('Remove');
+	removeLibrary.onClick( function () {
+		tools.removeLibrary();
+	});
+	removeLibrary.setMarginLeft( '4px' );
+	span.add( removeLibrary );
+
+	container.add( span );
+
+
+	container.add( new UI.Break(), new UI.Break(), new UI.Break() );
 
 	// Scripts
 
-	container.add( new UI.Text( 'Scripts' ).setTextTransform( 'uppercase' ) );
-	container.add( new UI.Break(), new UI.Break() );
+	container.add( new UI.Text( 'Scripts' ) );
+	container.add( new UI.Break() );
 
 	var includesContainer = new UI.Row();
 	container.add( includesContainer );
@@ -142,6 +157,7 @@ Sidebar.Project = function ( editor ) {
 
 	signals.editorCleared.add( update );
 	signals.libraryAdded.add( update );
+	signals.libraryRemoved.add( update );
 	signals.includeAdded.add( update );
 	signals.includeRemoved.add( update );
 

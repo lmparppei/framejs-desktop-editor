@@ -1,4 +1,16 @@
-// App settings
+/*
+
+App settings
+
+Tools.js and App.js are the main components for desktop functionality.
+
+I've tried to keep the desktop app stuff separate from the core frame.js editor
+so whenever it gets an update I could migrate them together with less pain.
+
+It hasn't been really a success so far. 
+
+*/
+
 
 var app = {
 	devMode: false,

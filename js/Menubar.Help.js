@@ -35,14 +35,14 @@ Menubar.Help = function ( editor ) {
 	var option = new UI.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Source code' );
-	option.onClick( function () { window.open( 'https://github.com/mrdoob/frame.js/tree/master/editor', '_blank' ) } );
+	option.onClick( function () { window.open( 'https://github.com/lmparppei/framejs-desktop-editor/', '_blank' ) } );
 	options.add( option );
 
 	// about
 
 	var option = new UI.Panel();
 	option.setClass( 'option' );
-	option.setTextContent( 'About' );
+	option.setTextContent( 'About Frame.js' );
 	option.onClick( function () { window.open( 'http://github.com/mrdoob/frame.js/', '_blank' ) } );
 	options.add( option );
 

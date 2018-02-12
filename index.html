@@ -122,8 +122,11 @@
 			}
 
 			// Short-cuts
+			// Maybe these should live in a separate file
 
 			document.addEventListener( 'keydown', function ( event ) {
+
+				if (app.devMode) console.log('Keypress', event.keyCode);
 
 				if ( event.metaKey || event.ctrlKey ) {
 
@@ -159,7 +162,7 @@
 					return;
 
 				}
-				console.log('Keypress', event.keyCode);
+
 				switch ( event.keyCode ) {
 
 					case 8: // prevent browser back

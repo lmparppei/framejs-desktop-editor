@@ -13,6 +13,7 @@ var Editor = function () {
 		// libraries
 
 		libraryAdded: new Signal(),
+		libraryRemoved: new Signal(),
 
 		// includes
 
@@ -171,6 +172,17 @@ Editor.prototype = {
 		this.libraries.push( url );
 		this.signals.libraryAdded.dispatch();
 
+	},
+
+	removeLibrary: function ( url ) {
+		if ( confirm( "You are about to remove libraries. This might cause the project to act unexpectedly or even get unusable unless you fix it manually. Are you sure?" ) ) {
+
+			var index = editor.libraries.indexOf( url );
+			editor.libraries.splice(index);
+
+			this.signals.libraryRemoved.dispatch();
+
+		}
 	},
 
 	// includes

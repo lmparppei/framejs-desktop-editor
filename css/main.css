@@ -25,10 +25,11 @@ textarea, input { outline: none; } /* osx */
 
 input.Input {
 	color: #3AC785;
-	font-size: 12px;
-	background-color: #444;
+	font-size: 13px;
+	background-color: #3a3a3a;
 	border: 0px;
 	padding: 2px 4px;
+	margin: 4px 0 4px 0;
 }
 
 input.Number {
@@ -42,10 +43,12 @@ input.Number {
 
 select.Select {
 	color: #3AC785;
-	font-size: 12px;
-	background-color: #444;
+	font-size: 13px;
+	background-color: #3a3a3a;
 	border: 0px;
 	padding: 2px 4px;
+
+	margin: 4px 0 4px 0;
 }
 
 .CodeMirror {
