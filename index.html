@@ -144,6 +144,13 @@
 							if (editor.selected === null) return;
 							tools.copy();
 							break;
+						case 79: // CMD + O to open
+							if (!app.saved) {
+								if ( confirm( 'Any unsaved data will be lost. Are you sure?' ) ) tools.open();
+							} else {
+								tools.open();
+							}
+							break;
 						case 86: // CMD + V to paste
 							tools.paste();
 							break;

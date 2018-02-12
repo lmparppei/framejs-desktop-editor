@@ -5,6 +5,7 @@
 var Controls = function ( editor ) {
 
 	var signals = editor.signals;
+	var appPath = path.dirname(require.main.filename);
 
 	var container = new UI.Panel();
 	container.setId( 'controls' );
@@ -14,7 +15,7 @@ var Controls = function ( editor ) {
 	container.add( row );
 
 	var prevButton = new UI.Button();
-	prevButton.setBackground( 'url(files/prev.svg)' );
+	prevButton.setBackground( 'url(' + appPath + '/files/prev.svg)' );
 	prevButton.setWidth( '20px' );
 	prevButton.setHeight( '20px' );
 	prevButton.setMarginRight( '4px' );
@@ -27,7 +28,7 @@ var Controls = function ( editor ) {
 	row.add( prevButton );
 
 	var playButton = new UI.Button();
-	playButton.setBackground( 'url(files/play.svg)' );
+	playButton.setBackground( 'url(' + appPath + '/files/play.svg)' );
 	playButton.setWidth( '20px' );
 	playButton.setHeight( '20px' );
 	playButton.setMarginRight( '4px' );
@@ -40,7 +41,7 @@ var Controls = function ( editor ) {
 	row.add( playButton );
 
 	var nextButton = new UI.Button();
-	nextButton.setBackground( 'url(files/next.svg)' );
+	nextButton.setBackground( 'url(' + appPath + '/files/next.svg)' );
 	nextButton.setWidth( '20px' );
 	nextButton.setHeight( '20px' );
 	nextButton.setMarginRight( '4px' );
@@ -112,7 +113,7 @@ var Controls = function ( editor ) {
 
 	signals.playingChanged.add( function ( isPlaying ) {
 
-		playButton.setBackground( isPlaying ? 'url(files/pause.svg)' : 'url(files/play.svg)' )
+		playButton.setBackground( isPlaying ? 'url(' + appPath + '/files/pause.svg)' : 'url(' + appPath + '/files/play.svg)' )
 
 	} );
 

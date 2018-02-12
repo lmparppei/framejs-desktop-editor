@@ -20,6 +20,16 @@ Menubar.Help = function ( editor ) {
 	options.setClass( 'options' );
 	container.add( options );
 
+	// console
+
+	var option = new UI.Panel();
+	option.setClass( 'option' );
+	option.setTextContent( 'Developer console' );
+	option.onClick ( function () {
+		require('electron').remote.getCurrentWindow().toggleDevTools();
+	});
+	options.add( option );
+
 	// source code
 
 	var option = new UI.Panel();
