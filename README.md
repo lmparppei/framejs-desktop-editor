@@ -1,6 +1,6 @@
 # frame.js desktop editor
 
-Electron version of @mrdoob's [frame.js editor](http://mrdoob.github.io/frame.js/editor/). Work in progress. Created for my personal projects. I haven't provided a binary for now.
+Electron fork of @mrdoob's [frame.js editor](http://mrdoob.github.io/frame.js/editor/). Work in progress. Created for my personal projects. No binary is provided at this stage, but it should run on any supported OS using Electron. Feel free to contribute!
 
 Read more about frame.js at [http://mrdoob.github.io/frame.js/](http://mrdoob.github.io/frame.js/)
 
