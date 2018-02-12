@@ -8,7 +8,7 @@ Read more about frame.js at [http://mrdoob.github.io/frame.js/](http://mrdoob.gi
 
 * Copy and paste functions
 * Open and save instead of import and export
-* File paths are (and should stay) relative to the project on your hard disk. If you intend to use libraries and other files, you should start by saving your project. One example project (from the original editor) is included with its paths fixed.
+* File paths are (and should stay) relative to the project on your hard disk. If you intend to use libraries and other files, you should start by saving your project in its final path. *Save as...* tries to relocate your libraries automatically if the path is changed, but you might still need to fix things manually in the JSON file. 
 * At this point, there is no auto-save and the app doesn't keep track if you have changed something. Be sure to save your project often.
 
 ### Possible bugs & problems
