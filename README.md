@@ -1,10 +1,10 @@
 # frame.js desktop editor
 
-Electron fork of @mrdoob's [frame.js editor](http://mrdoob.github.io/frame.js/editor/). Work in progress. Created for my personal projects. No binary is provided at this stage, but it should run on any supported OS using Electron. Feel free to contribute!
+Electron fork of @mrdoob's [frame.js editor](http://mrdoob.github.io/frame.js/editor/). Work in progress - this is created for a personal project, so changes to the app might be erratic. No binary is provided at this stage, but it should run on any supported OS using Electron. Feel free to contribute!
 
 Read more about frame.js at [http://mrdoob.github.io/frame.js/](http://mrdoob.github.io/frame.js/)
 
-### Differences with web editor
+### Differences with the web editor
 
 * Copy and paste functions
 * Open and save instead of import and export

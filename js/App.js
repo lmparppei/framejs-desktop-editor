@@ -1,7 +1,7 @@
 // App settings
 
 var app = {
-	devMode: true,
+	devMode: false,
 	name: "frame.js desktop editor",
 	status: null,
 	saved: true,
